@@ -25,7 +25,7 @@ def get_mounts():
     mounts = dict()
 
     pat = re.compile(r'([^\s]*) on (.*?) (?:\(|type)')
-    for line in subprocess.check_output(['mount']).split('\n'):
+    for line in subprocess.check_output(['mount'], universal_newlines=True).split('\n'):
         match = pat.match(line)
         if match:
             mounts[match.group(1)] = match.group(2)

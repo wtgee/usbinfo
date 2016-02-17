@@ -39,7 +39,7 @@ def usbinfo():
         try:
             # We need to manually get the next item in the iterator because
             # pyudev.device may throw an exception
-            device = device_it.next()
+            device = next(device_it)
         except pyudev.device.DeviceNotFoundError:
             continue
         except StopIteration:
